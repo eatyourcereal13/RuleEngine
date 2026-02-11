@@ -25,17 +25,6 @@ app.include_router(campaigns_router, prefix=settings.API_V1_STR)
 app.include_router(schedules_router, prefix=settings.API_V1_STR)
 app.include_router(evaluations_router, prefix=settings.API_V1_STR)
 
-@app.get("/debug/time")
-async def debug_time():
-    """Диагностика времени - временно!"""
-    now = datetime.now()
-    return {
-        "server_time": now.isoformat(),
-        "server_time_human": now.strftime("%Y-%m-%d %H:%M:%S"),
-        "utc_offset": time.timezone,
-        "is_dst": time.daylight,
-        "timestamp": time.time()
-    }
 @app.get("/")
 async def root():
     return {
